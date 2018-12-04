@@ -3,8 +3,11 @@ To prepare for the incoming master thesis project and the research work at labor
 
 To compile the LaTex project with correct bibliography, please use:
 > pdflatex main.tex
+
 > bibtex main
+
 > pdflatex main.tex
+
 > pdflatex main.tex
 
 PDF preview [here](https://github.com/sulxxy/Machine_Learning_Paper_Reviews/blob/master/main.pdf)
