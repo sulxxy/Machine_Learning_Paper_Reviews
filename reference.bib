@@ -1,0 +1,108 @@
+@article{duchi2011adaptive,
+  title={Adaptive subgradient methods for online learning and stochastic optimization},
+  author={Duchi, John and Hazan, Elad and Singer, Yoram},
+  journal={Journal of Machine Learning Research},
+  volume={12},
+  number={Jul},
+  pages={2121--2159},
+  year={2011}
+}
+@article{mcmahan2010adaptive,
+  title={Adaptive bound optimization for online convex optimization},
+  author={McMahan, H Brendan and Streeter, Matthew},
+  journal={arXiv preprint arXiv:1002.4908},
+  year={2010}
+}
+@article{shalev2012online,
+  title={Online learning and online convex optimization},
+  author={Shalev-Shwartz, Shai and others},
+  journal={Foundations and Trends{\textregistered} in Machine Learning},
+  volume={4},
+  number={2},
+  pages={107--194},
+  year={2012},
+  publisher={Now Publishers, Inc.}
+}
+@article{mcmahan2017survey,
+  title={A survey of algorithms and analysis for adaptive online learning},
+  author={McMahan, H Brendan},
+  journal={The Journal of Machine Learning Research},
+  volume={18},
+  number={1},
+  pages={3117--3166},
+  year={2017},
+  publisher={JMLR. org}
+}
+@article{Cutkosky2017,
+    archivePrefix = {arXiv},
+    arxivId = {1703.02629},
+    author = {Cutkosky, Ashok and Boahen, Kwabena},
+    eprint = {1703.02629},
+    isbn = {1703.02629v2},
+    journal = {Proceedings of Machine Learning Research},
+    keywords = {()},
+    mendeley-groups = {MasterThesis},
+    pages = {1--35},
+    title = {{Online Learning Without Prior Information}},
+    url = {https://arxiv.org/pdf/1703.02629.pdf},
+    volume = {65},
+    year = {2017}
+}
+@article{Orabona2016,
+abstract = {In the recent years, a number of parameter-free algorithms have been developed for online linear optimization over Hilbert spaces and for learning with expert advice. These algorithms achieve optimal regret bounds that depend on the unknown competitors, without having to tune the learning rates with oracle choices. We present a new intuitive framework to design parameter-free algorithms for $\backslash$emph{\{}both{\}} online linear optimization over Hilbert spaces and for learning with expert advice, based on reductions to betting on outcomes of adversarial coins. We instantiate it using a betting algorithm based on the Krichevsky-Trofimov estimator. The resulting algorithms are simple, with no parameters to be tuned, and they improve or match previous results in terms of regret guarantee and per-round complexity.},
+archivePrefix = {arXiv},
+arxivId = {1602.04128},
+author = {Orabona, Francesco and P{\'{a}}l, D{\'{a}}vid},
+eprint = {1602.04128},
+file = {:Users/liuzhiwei/Library/Application Support/Mendeley Desktop/Downloaded/Orabona, P{\'{a}}l - 2016 - Coin Betting and Parameter-Free Online Learning.pdf:pdf},
+issn = {10495258},
+mendeley-groups = {MasterThesis},
+month = {feb},
+title = {{Coin Betting and Parameter-Free Online Learning}},
+url = {http://arxiv.org/abs/1602.04128},
+year = {2016}
+}
+@incollection{Cutkosky2016,
+abstract = {We propose an online convex optimization algorithm (RescaledExp) that achieves optimal regret in the unconstrained setting without prior knowledge of any bounds on the loss functions. We prove a lower bound showing an exponential separation between the regret of existing algorithms that require a known bound on the loss functions and any algorithm that does not require such knowledge. RescaledExp matches this lower bound asymptotically in the number of iterations. RescaledExp is naturally hyperparameter-free and we demonstrate empirically that it matches prior optimization algorithms that require hyperparameter optimization.},
+author = {Cutkosky, Ashok and Boahen, Kwabena A},
+booktitle = {Advances in Neural Information Processing Systems 29},
+issn = {10495258},
+title = {{Online Convex Optimization with Unconstrained Domains and Losses}},
+year = {2016}
+}
+@article{McMahan2013,
+abstract = {We design and analyze minimax-optimal algorithms for online linear optimization games where the player's choice is unconstrained. The player strives to minimize regret, the difference between his loss and the loss of a post-hoc benchmark strategy. The standard benchmark is the loss of the best strategy chosen from a bounded comparator set. When the the comparison set and the adversary's gradients satisfy L{\_}infinity bounds, we give the value of the game in closed form and prove it approaches sqrt(2T/pi) as T -{\textgreater} infinity. Interesting algorithms result when we consider soft constraints on the comparator, rather than restricting it to a bounded set. As a warmup, we analyze the game with a quadratic penalty. The value of this game is exactly T/2, and this value is achieved by perhaps the simplest online algorithm of all: unprojected gradient descent with a constant learning rate. We then derive a minimax-optimal algorithm for a much softer penalty function. This algorithm achieves good bounds under the standard notion of regret for any comparator point, without needing to specify the comparator set in advance. The value of this game converges to sqrt{\{}e{\}} as T -{\textgreater}infinity; we give a closed-form for the exact value as a function of T. The resulting algorithm is natural in unconstrained investment or betting scenarios, since it guarantees at worst constant loss, while allowing for exponential reward against an "easy" adversary.},
+archivePrefix = {arXiv},
+arxivId = {1302.2176},
+author = {McMahan, H. B. and Abernethy, J.},
+eprint = {1302.2176},
+issn = {10495258},
+journal = {Advances in Neural Information Processing Systems 26 (NIPS)},
+title = {{Minimax optimal algorithms for unconstrained linear optimization}},
+year = {2013}
+}
+@inproceedings{orabona2014simultaneous,
+  title={Simultaneous model selection and optimization through parameter-free stochastic learning},
+  author={Orabona, Francesco},
+  booktitle={Advances in Neural Information Processing Systems},
+  pages={1116--1124},
+  year={2014}
+}
+
+@article{Cutkosky2018,
+abstract = {We introduce several new black-box reductions that significantly improve the design of adaptive and parameter-free online learning algorithms by simplifying analysis, improving regret guarantees, and sometimes even improving runtime. We reduce parameter-free online learning to online exp-concave optimization, we reduce optimization in a Banach space to one-dimensional optimization, and we reduce optimization over a constrained domain to unconstrained optimization. All of our reductions run as fast as online gradient descent. We use our new techniques to improve upon the previously best regret bounds for parameter-free learning, and do so for arbitrary norms.},
+archivePrefix = {arXiv},
+arxivId = {1802.06293},
+author = {Cutkosky, Ashok and Orabona, Francesco},
+doi = {http://dx.doi.org/10.2166/wh.2016.230},
+eprint = {1802.06293},
+file = {:Users/liuzhiwei/Library/Application Support/Mendeley Desktop/Downloaded/Cutkosky, Orabona - 2018 - Black-Box Reductions for Parameter-free Online Learning in Banach Spaces.pdf:pdf},
+issn = {1477-8920},
+mendeley-groups = {MasterThesis},
+month = {feb},
+title = {{Black-Box Reductions for Parameter-free Online Learning in Banach Spaces}},
+url = {http://arxiv.org/abs/1802.06293},
+year = {2018}
+}
+
+
