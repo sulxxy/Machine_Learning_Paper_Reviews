@@ -1,0 +1,34 @@
+\cite{Cutkosky2018} introduces several new parameter-free online learning algorithms using the reduction technique. For a convex loss $l$ and parameter $w \in W$ in which $W$ is a convex set, 
+\begin{equation}\label{eq:reduction}
+\begin{aligned}
+    R_T(w^{*}) & \leq \sum_{t=1}^{T} \langle g_t, (w_t-w^{*}) \rangle = \sum_{t=1}^{T} \langle g_t, z_ty_t \rangle - \langle g_t, w^{*} \rangle \\
+               & = \sum_{t=1}^{T} \langle g_t, y_t \rangle z_t - \langle g_t, y_t \rangle {\Vert{w^{*}}\Vert} + {\Vert{w^{*}}\Vert} (\langle g_t, y_t \rangle  - \langle g_t,  \frac{w^{*}} {\Vert{w^{*}}\Vert}\rangle)\\
+               & = \sum_{t=1}^{T} \langle \langle g_t, y_t \rangle , z_t-{\Vert{w^{*}}\Vert}\rangle + {\Vert {w^{*}}\Vert} \langle g_t, y_t-{\Vert{w^{*}}\Vert}w^{*}\rangle \\
+               & = R_T^{1D}({\Vert {w^{*}}\Vert}) + {\Vert{w^{*}}\Vert} R_T^S( \frac{w^{*}}{\Vert{w^{*}}\Vert})
+\end{aligned}
+\end{equation}
+The origin problem is unknown with both the diameter $D$ of $w$ and the bounds of gradients $L_{\max}$ of gradients. 
+
+However, after reduced it to 2 sub-problems, the diameters for both are known.
+For the first term, it is a one-Dimension optimization problem, designing a 1D optimization algorithm $A^{1D}$ could solve this problem (FreeRex mentioned in subsection \ref{ssec: online_learning_without_prior_info} could be applied here). For the second term, the parameter $\frac {w^{*}}{\Vert w^{*} \Vert}$ is a unit ball which means $D^{S} = 1$. 
+
+Simply speaking, the algorithm reduces $w$ of origin problem into $zy$, in which $z \in \mathbb{R}$ and $y \in {\mathbb{R}}^d$ whose diameter is $1$. The reduction algorithm is described in algorithm \ref{alg:1DReduction}. 
+\begin{algorithm}
+\caption{1D Reduction algorithm}
+\label{alg:1DReduction}
+{\bfseries Input:} a 1D online learning algorithm $A_{1D}$ and a online learning algorithm $A_S$ whose domain is a ball with radius $r$ defined in Banach space, as well as loss $l$ of origin problem.
+\begin{algorithmic}[1]
+\For {$t=1$ {\bfseries to} $T$}
+    \State {Get $z_t$ from $A_{1D}$}
+    \State {Get $y_t$ from $A_S$}
+    \State {$w_t=z_ty_t$}
+    \State {$g_t=\frac{\partial{l}}{\partial{w_t}}$}
+    \State {Set $\langle g_t, y_t \rangle$ as $t$th subgradient of $A_{1D}$ }
+    \State {Optimize $A_{1D}$}
+    \State {Set $g_t$ as $t$th subgradient of $A_S$}
+    \State {Optimize $A_S$} 
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+This paper also introduces other fancy reduction technique but it is out of my research range so I just skip it.
