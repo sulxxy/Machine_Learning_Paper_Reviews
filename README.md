@@ -9,5 +9,3 @@ To compile the LaTex project with correct bibliography, please use:
 > pdflatex main.tex
 
 > pdflatex main.tex
-
-PDF preview [here](https://github.com/sulxxy/Machine_Learning_Paper_Reviews/blob/master/main.pdf)
