@@ -1,1 +1,60 @@
-\cite{Hazan2015} introduces  graduated optimization method to search for the global optimal for non-convex functions. Simply speaking, it uses the following approximate function to smooth the origin functions:
+\cite{Hazan2015} introduces  graduated optimization method to search for the global optimal (in certain probability) for non-convex functions. A key concept it uses is smoothing. Given an L-Lipschitz function $f: \mathbb{R}^d \mapsto \mathbb{R}$, its $\delta$-smooth version is:
+$$
+\hat{f_\delta}(\mathbf{x}) = \mathbf{E}_{\mathbf{u}\sim\mathbb{B}}[f(\mathbf{x}+\delta\mathbf{u})]
+$$
+$\mathbb{B}$ is used to denote the unit Euclidean ball in $\mathbb{R}^d$. 
+
+Intuitively, at point $\mathbf{x}$, the $\delta$-smooth function uses the expectation value of origin function $f$ whose domain is the unit ball centered on $\mathbf{x}$.
+
+Following is the main definition of this paper, which is called $(a, \sigma)$-Nice.
+\newtheorem{sigma-Nice}{Definition}
+\begin{sigma-Nice}
+Let $a, \sigma > 0$. A function $f: \mathcal{K} \mapsto \mathbb{R}$ is said to be $(a, \sgima)$-Nice if the following holds:
+
+\begin{itemize}
+    \item \textbf{Centering Property:} For every $\delta > 0$, and every $\mathbf{x}^*_\delta \in \argmin_{\mathbf{x}^* \in \mathcal{K}} \hat{f}_{a\delta}(\mathbf{x})$, there exists $\mathbf{x}^*_{\delta/2} \in \argmin_{\mathbf{x} in \mathcal{K}} \hat{f}_{a\delta/2}(\mathbf{x})$, such that $\Vert\mathbf{x}^*_{\delta} - \mathbf{x}^*_{\delta/2}\Vert \leq \delta/2$.
+    \item \textbf{Local strong convexity of the smoothed versions:} For every $\delta > 0 $, let $r_\delta = 3\delta$, and denote $\mathbf{x}^*_{\delta} = \argmin_{\mathbf{x} \in \mathcal{K}} \hat{f}_{a\delta}(\mathbf{x})$, then over $\mathbb{B}_{r_\delta}(\mathbf{x}^*_{\delta})$ the function $\hat{f}_{a\delta}(\mathbf{x})$ is $\sigma$-strongly-convex.
+\end{itemize}
+In the case of $a=1$ we say that $f$ is $\sigma$-nice.
+\end{sigma-Nice}
+
+For simplicity, this paper only discussed $\sigma$-nice functions. The paper contributes following algorithm \ref{alg:GradOptG} and \ref{alg:Suffix-SGD}.
+
+\begin{algorithm}
+\caption{GradOpt_G}
+\label{alg:GradOptG}
+{\bfseries Input:} target error $\xi$, maximal failure probaility $p$, decision set $\mathcal{K}$
+\begin{algorithmic}[1]
+\State Choose $\overline{\mathbf{x}}_1 \in \mathcal{K}$ uniformly at random
+\State Set $\delta_1 = diam(\mathcal{K}), \tilde{p} = p/M$, and $M = \log_2(\frac{1}{\alpha_0\xi}$ where $\alpha_0=\min\big\{\frac{1}{2L\delta_1}, \frac{4}{\sqrt{\sigma}\delta_1}\big\}$  
+\For {$m=1$ {\bfseries to} $M$}
+    \State {Set $\xi_m := \sigma\delta^2_m/32$, and $$T_F = \frac{12480L^2}{\sigma\xi_m}\log(\frac{2}{p} + 2\log\frac{12480L^2}{\sigma\xi_m})$$}
+    \State {Set shrinked decision set: $$\mathcal{K} := \mathcal{K} \cap B(\overline{\mathbf{x}}_m, 1.5\sigma_m)$$}
+    \State {set gradient oracle for $\hat{f}_{\delta_m}$, $$\text{GradOracle}(\cdot) = \text{SGO}_G(\cdot, \delta_m)$$}
+    \State {Update: $$\overline{\mathbf{x}}_{m+1} \leftarrow \text{Suffix-SGD}(T_F, \mathcal{K}_m, \overline{\mathbf{x}}_m, \text{GradOracle})$$}
+    \State {$\delta_{m+1}= \delta_m/2$}
+\EndFor
+\State \Return {$\overline{\mathbf{x}}_{M+1}$}
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Suffix-SGD}
+\label{alg:Suffix-SGD}
+{\bfseries Input:} total time $T_F$, decision set $\mathcal{K}$, initial point $\mathbf{x}_1 \in \mathcal{K}$, gradient oracle GradOracle$(\cdot)$
+\begin{algorithmic}[1]
+\For {$t=1$ {\bfseries to} $T_F$}
+    \State {Set $\eta_t = 1/\sigma_t$} 
+    \State {Query $g_t \leftarrow \text{GradOracle}(\mathbf{x}_t)$}
+    \State {Update $\mathbf{x}_{t+1} \leftarrow \prod_{\mathcal{K}}(\mathbf{x_t} - \eta g_t)$}
+\EndFor
+\State \Return {$\overline{\mathbf{x}}_{T_F} := \frac{2}{T_F}(\mathbf{x}_{T_F/2 + 1} + \cdots + \mathbf{x}_{T_F})$} 
+\end{algorithmic}
+\end{algorithm}
+
+The paper proves that the algorithm \ref{alg:GradOptG} and \ref{alg:Suffix-SGD} ensures to reach a global optimal in certain probability. See theorem \ref{theorem:GradOptG}.
+\newtheorem{theorem:GradOptG}{Theorem}
+\begin{theorem:GradOptG}
+\label{theorem:GradOptG}
+Let $\xi \in (0,1)$ and $p \in (0, 1/e)$, also let $\mathcal{K}$ be a convex set, and $f$ be an L-Lipschitz $\sigma$-nice function. Suppose that we apply Algorithm \ref{alg:GradOptG}, then after $O(1/\sigma^2\xi^2)$ optimization steps, Algorithm \ref{alg:GradOptG} outputs a point $\overline{\mathbf{x}_{M+1}}$ which is $\xi$ optimal with a probability greater than $1-p$.
+\end{theorem:GradOptG}
