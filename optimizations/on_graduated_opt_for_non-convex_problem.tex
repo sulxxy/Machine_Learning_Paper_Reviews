@@ -1,5 +1,5 @@
-\paragraph{Main Idea}
-\cite{Hazan2015} introduces  graduated optimization method to search for the global optimal (in certain probability) for non-convex functions. A key concept it uses is smoothing. Given an L-Lipschitz function $f: \mathbb{R}^d \mapsto \mathbb{R}$, its $\delta$-smooth version is:
+\paragraph{Main Idea:}
+\cite{Hazan2015} introduces  graduated optimization method to search for the global optimal (in certain probability) for non-convex functions. A key concept it uses is smoothing. Given an $L$-Lipschitz function $f: \mathbb{R}^d \mapsto \mathbb{R}$, its $\delta$-smooth version is:
 $$
 \hat{f_\delta}(\mathbf{x}) = \mathbf{E}_{\mathbf{u}\sim\mathbb{B}}[f(\mathbf{x}+\delta\mathbf{u})]
 $$
@@ -57,14 +57,14 @@ The paper proves that the algorithm \ref{alg:GradOptG} and \ref{alg:Suffix-SGD} 
 \newtheorem{theorem:GradOptG}{Theorem}
 \begin{theorem:GradOptG}
 \label{theorem:GradOptG}
-Let $\xi \in (0,1)$ and $p \in (0, 1/e)$, also let $\mathcal{K}$ be a convex set, and $f$ be an L-Lipschitz $\sigma$-nice function. Suppose that we apply Algorithm \ref{alg:GradOptG}, then after $O(1/\sigma^2\xi^2)$ optimization steps, Algorithm \ref{alg:GradOptG} outputs a point $\overline{\mathbf{x}_{M+1}}$ which is $\xi$ optimal with a probability greater than $1-p$.
+Let $\xi \in (0,1)$ and $p \in (0, 1/e)$, also let $\mathcal{K}$ be a convex set, and $f$ be an $L$-Lipschitz $\sigma$-nice function. Suppose that we apply Algorithm \ref{alg:GradOptG}, then after $O(1/\sigma^2\xi^2)$ optimization steps, Algorithm \ref{alg:GradOptG} outputs a point $\overline{\mathbf{x}_{M+1}}$ which is $\xi$ optimal with a probability greater than $1-p$.
 \end{theorem:GradOptG}
 
 Theorem \ref{theorem:GradOptG} can be proved mathematically. Since the proof is complex, we omit it here.
 
 \paragraph{Remark: } This paper demonstrates an algorithm to find the global optimal in a non-convex problem. However, it assumes that the non-convex function is a $\sigma$-nice function. There are 2 problems in practice. 
 \begin{itemize}
-    \item We don't know the value of $\sigma$.
+    \item We don't know (or hard to know) the value of $\sigma$ and $L$.
     \item One needs to prove its loss function is $\sigma$-nice before applying it, which is quite impractical. That is to say, this algorithm has poor scalability. 
 \end{itemize}
 
