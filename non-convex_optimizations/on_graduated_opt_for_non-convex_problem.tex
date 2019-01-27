@@ -11,7 +11,6 @@ Following is the main definition of this paper, which is called $(a, \sigma)$-Ni
 \newtheorem{sigma-Nice}{Definition}
 \begin{sigma-Nice}
 Let $a, \sigma > 0$. A function $f: \mathcal{K} \mapsto \mathbb{R}$ is said to be $(a, \sgima)$-Nice if the following holds:
-
 \begin{itemize}
     \item \textbf{Centering Property:} For every $\delta > 0$, and every $\mathbf{x}^*_\delta \in \argmin_{\mathbf{x}^* \in \mathcal{K}} \hat{f}_{a\delta}(\mathbf{x})$, there exists $\mathbf{x}^*_{\delta/2} \in \argmin_{\mathbf{x} in \mathcal{K}} \hat{f}_{a\delta/2}(\mathbf{x})$, such that $\Vert\mathbf{x}^*_{\delta} - \mathbf{x}^*_{\delta/2}\Vert \leq \delta/2$.
     \item \textbf{Local strong convexity of the smoothed versions:} For every $\delta > 0 $, let $r_\delta = 3\delta$, and denote $\mathbf{x}^*_{\delta} = \argmin_{\mathbf{x} \in \mathcal{K}} \hat{f}_{a\delta}(\mathbf{x})$, then over $\mathbb{B}_{r_\delta}(\mathbf{x}^*_{\delta})$ the function $\hat{f}_{a\delta}(\mathbf{x})$ is $\sigma$-strongly-convex.
@@ -22,9 +21,9 @@ In the case of $a=1$ we say that $f$ is $\sigma$-nice.
 For simplicity, this paper only discussed $\sigma$-nice functions. The paper contributes following algorithm \ref{alg:GradOptG} and \ref{alg:Suffix-SGD}.
 
 \begin{algorithm}
-\caption{GradOpt_G}
+\caption{$\text{GradOpt}_G$}
 \label{alg:GradOptG}
-{\bfseries Input:} target error $\xi$, maximal failure probaility $p$, decision set $\mathcal{K}$
+{\bfseries Input:} target error $\xi$, maximal failure probability $p$, decision set $\mathcal{K}$
 \begin{algorithmic}[1]
 \State Choose $\overline{\mathbf{x}}_1 \in \mathcal{K}$ uniformly at random
 \State Set $\delta_1 = diam(\mathcal{K}), \tilde{p} = p/M$, and $M = \log_2(\frac{1}{\alpha_0\xi}$ where $\alpha_0=\min\big\{\frac{1}{2L\delta_1}, \frac{4}{\sqrt{\sigma}\delta_1}\big\}$  
@@ -45,7 +44,7 @@ For simplicity, this paper only discussed $\sigma$-nice functions. The paper con
 {\bfseries Input:} total time $T_F$, decision set $\mathcal{K}$, initial point $\mathbf{x}_1 \in \mathcal{K}$, gradient oracle GradOracle$(\cdot)$
 \begin{algorithmic}[1]
 \For {$t=1$ {\bfseries to} $T_F$}
-    \State {Set $\eta_t = 1/\sigma_t$} 
+    \State {Set $\eta_t = 1/t\sigma$} 
     \State {Query $g_t \leftarrow \text{GradOracle}(\mathbf{x}_t)$}
     \State {Update $\mathbf{x}_{t+1} \leftarrow \prod_{\mathcal{K}}(\mathbf{x_t} - \eta g_t)$}
 \EndFor
@@ -64,7 +63,7 @@ Theorem \ref{theorem:GradOptG} can be proved mathematically. Since the proof is 
 
 \paragraph{Remark: } This paper demonstrates an algorithm to find the global optimal in a non-convex problem. However, it assumes that the non-convex function is a $\sigma$-nice function. There are 2 problems in practice. 
 \begin{itemize}
-    \item We don't know (or hard to know) the value of $\sigma$ and $L$.
+    \item We are unable (or hard) to know the value of $\sigma$ and $L$.
     \item One needs to prove its loss function is $\sigma$-nice before applying it, which is quite impractical. That is to say, this algorithm has poor scalability. 
 \end{itemize}
 

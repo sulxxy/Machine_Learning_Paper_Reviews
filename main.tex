@@ -90,43 +90,39 @@
 \maketitle
 \newpage
 \tableofcontents
+\clearpage
 
-\newpage
 % \begin{abstract}
 % \end{abstract}
 \section{Introduction}
 \input{intro.tex}
+\clearpage
 
-\newpage
-\section{Optimization}
-\label{sec:optimization}
-\input{optimizations/optimization.tex}
+\section{Introductory Materials}
+\label{sec:introduction_materials}
+\input{introductions/main.tex}
+\clearpage
 
-\newpage
-\section{Deep Learning}
-\label{sec:deep_learning}
-\input{deep_learning.tex}
+\section{Online Convex Optimization}
+\label{sec:online_convex_optimization}
+\input{online_convex_optimizations/main.tex}
+\clearpage
 
-\newpage
-\section{Reinforcement Learning}
-\label{sec:reinforcement_learning}
-\input{rf.tex}
+\section{Non-Convex Optimization}
+\label{sec:non-convex_optimization}
+\input{non-convex_optimizations/main.tex}
+\clearpage
 
-\newpage
-\section{Natural Language Processing}
-\label{sec:nlp}
-\input{nlp.tex}
+\section{Supplementary Materials}
+\label{sec:supplementary_materials}
+\input{Supplements/main.tex}
+\clearpage
 
-\newpage
-\section{Computer Vision}
-\label{sec:cv}
-\input{cv.tex}
-
-\newpage
 \section{Conclusion}
 \input{conclusion.tex}
+\clearpage
 
-\newpage
+\clearpage
 \bibliography{reference}
 
 \end{document}

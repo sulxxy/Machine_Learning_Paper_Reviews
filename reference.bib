@@ -23,15 +23,26 @@
   year={2012},
   publisher={Now Publishers, Inc.}
 }
-@article{mcmahan2017survey,
-  title={A survey of algorithms and analysis for adaptive online learning},
-  author={McMahan, H Brendan},
-  journal={The Journal of Machine Learning Research},
-  volume={18},
-  number={1},
-  pages={3117--3166},
-  year={2017},
-  publisher={JMLR. org}
+
+@techreport{McMahan2014,
+abstract = {We present tools for the analysis of Follow-The-Regularized-Leader (FTRL), Dual Averaging, and Mirror Descent algorithms when the regularizer (equivalently, prox-function or learning rate schedule) is chosen adaptively based on the data. Adaptivity can be used to prove regret bounds that hold on every round, and also allows for data-dependent regret bounds as in AdaGrad-style algorithms (e.g., Online Gradient Descent with adaptive per-coordinate learning rates). We present results from a large number of prior works in a unified manner, using a modular and tight analysis that isolates the key arguments in easily re-usable lemmas. This approach strengthens pre-viously known FTRL analysis techniques to produce bounds as tight as those achieved by potential functions or primal-dual analysis. Further, we prove a general and exact equivalence between an arbitrary adaptive Mirror Descent algorithm and a correspond- ing FTRL update, which allows us to analyze any Mirror Descent algorithm in the same framework. The key to bridging the gap between Dual Averaging and Mirror Descent algorithms lies in an analysis of the FTRL-Proximal algorithm family. Our regret bounds are proved in the most general form, holding for arbitrary norms and non-smooth regularizers with time-varying weight.},
+archivePrefix = {arXiv},
+arxivId = {1403.3465},
+author = {McMahan, H. Brendan},
+booktitle = {Journal of Machine Learning Research},
+doi = {10.1016/j.chroma.2010.08.034},
+eprint = {1403.3465},
+file = {:Users/liuzhiwei/Library/Application Support/Mendeley Desktop/Downloaded/Mcmahan - 2017 - A Survey of Algorithms and Analysis for Adaptive Online Learning.pdf:pdf},
+isbn = {0021-9673},
+issn = {15337928},
+keywords = {adaptive algorithms,dual averaging,follow-the-regularized-leader,mirror descent,online convex optimization,online learning,regret analysis},
+mendeley-groups = {ML/MasterThesis},
+pages = {1--50},
+pmid = {20817166},
+title = {{A Survey of Algorithms and Analysis for Adaptive Online Learning}},
+url = {http://arxiv.org/abs/1403.3465},
+volume = {18},
+year = {2014}
 }
 @article{Cutkosky2017,
     archivePrefix = {arXiv},
@@ -151,5 +162,49 @@ volume = {13},
 year = {2007}
 }
 
+@article{Allen-Zhu2017,
+abstract = {We design a stochastic algorithm to train any smooth neural network to {\$}\backslashvarepsilon{\$}-approximate local minima, using {\$}O(\backslashvarepsilon{\^{}}{\{}-3.25{\}}){\$} backpropagations. The best result was essentially {\$}O(\backslashvarepsilon{\^{}}{\{}-4{\}}){\$} by SGD. More broadly, it finds {\$}\backslashvarepsilon{\$}-approximate local minima of any smooth nonconvex function in rate {\$}O(\backslashvarepsilon{\^{}}{\{}-3.25{\}}){\$}, with only oracle access to stochastic gradients.},
+archivePrefix = {arXiv},
+arxivId = {1708.08694},
+author = {Allen-Zhu, Zeyuan},
+doi = {10.1177/1077699015607337},
+eprint = {1708.08694},
+file = {:Users/liuzhiwei/Library/Application Support/Mendeley Desktop/Downloaded/Allen-Zhu - Unknown - Natasha 2 Faster Non-Convex Optimization Than SGD.pdf:pdf},
+isbn = {1365-2753 (Electronic)$\backslash$r1356-1294 (Linking)},
+issn = {1702.00763},
+mendeley-groups = {ML/MasterThesis},
+pmid = {20626538},
+title = {{Natasha 2: Faster Non-Convex Optimization Than SGD}},
+url = {https://arxiv.org/abs/1708.08694. http://arxiv.org/abs/1708.08694},
+year = {2017}
+}
 
+@article{OPT-013,
+author = {Hazan, Elad},
+doi = {10.1561/2400000013},
+issn = {2167-3888},
+journal = {Foundations and Trends{\textregistered} in Optimization},
+mendeley-groups = {ML/MasterThesis},
+number = {3-4},
+pages = {157--325},
+title = {{Introduction to Online Convex Optimization}},
+url = {http://dx.doi.org/10.1561/2400000013},
+volume = {2},
+year = {2016}
+}
 
+@article{Agarwal2016,
+abstract = {We design a non-convex second-order optimization algorithm that is guaranteed to return an approximate local minimum in time which scales linearly in the underlying dimension and the number of training examples. The time complexity of our algorithm to find an approximate local minimum is even faster than that of gradient descent to find a critical point. Our algorithm applies to a general class of optimization problems including training a neural network and other non-convex objectives arising in machine learning.},
+archivePrefix = {arXiv},
+arxivId = {1611.01146},
+author = {Agarwal, Naman and Allen-Zhu, Zeyuan and Bullins, Brian and Hazan, Elad and Ma, Tengyu},
+doi = {10.1145/3055399.3055464},
+eprint = {1611.01146},
+file = {:Users/liuzhiwei/Library/Application Support/Mendeley Desktop/Downloaded/Agarwal et al. - 2016 - Finding Approximate Local Minima Faster than Gradient Descent Institute for Advanced Study.pdf:pdf},
+isbn = {9781450345286},
+issn = {07378017},
+mendeley-groups = {ML/MasterThesis},
+title = {{Finding Approximate Local Minima Faster than Gradient Descent}},
+url = {https://arxiv.org/pdf/1611.01146.pdf http://arxiv.org/abs/1611.01146},
+year = {2016}
+}
