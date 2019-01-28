@@ -1,5 +1,5 @@
 \paragraph{Main Idea:}
-\cite{Hazan2015} introduces  graduated optimization method to search for the global optimal (in certain probability) for non-convex functions. A key concept it uses is smoothing. Given an $L$-Lipschitz function $f: \mathbb{R}^d \mapsto \mathbb{R}$, its $\delta$-smooth version is:
+\cite{Hazan2015} introduces  graduated optimization method to search for the global optimal for a family of non-convex functions. A key concept it uses is smoothing. Given an $L$-Lipschitz function $f: \mathbb{R}^d \mapsto \mathbb{R}$, its $\delta$-smooth version is:
 $$
 \hat{f_\delta}(\mathbf{x}) = \mathbf{E}_{\mathbf{u}\sim\mathbb{B}}[f(\mathbf{x}+\delta\mathbf{u})]
 $$
@@ -18,7 +18,11 @@ Let $a, \sigma > 0$. A function $f: \mathcal{K} \mapsto \mathbb{R}$ is said to b
 In the case of $a=1$ we say that $f$ is $\sigma$-nice.
 \end{sigma-Nice}
 
-For simplicity, this paper only discussed $\sigma$-nice functions. The paper contributes following algorithm \ref{alg:GradOptG} and \ref{alg:Suffix-SGD}.
+For simplicity, this paper only discussed $\sigma$-nice functions. 
+
+Also, it demonstrates \textit{valley} phenomenon from a family of non-convex function in which a local minima is present. It proves that a quadratic function with a one dimensional valey is either $(\sqrt{d}, 0.5)$-nice or 0.5-strongly-convex.
+
+The paper contributes following algorithm \ref{alg:GradOptG} and \ref{alg:Suffix-SGD} for loss functions valley phenomenon.
 
 \begin{algorithm}
 \caption{$\text{GradOpt}_G$}
